@@ -22,7 +22,7 @@ The module calculates the score based on the following criteria:
 
 1. Transaction history
 2. Token balances
-3. mart contract interactions
+3. Smart contract interactions
 4. Staking activities
 
 ## Dependencies: Utilizes the following dependencies:
@@ -37,10 +37,10 @@ The module calculates the score based on the following criteria:
 
 The score for each wallet is calculated using predefined multipliers for each criterion:
 
-1. transactionCount: Weighted at 0.5
-2. tokenBalance: Weighted at 0.3
-3. smartContractInteractions: Weighted at 0.1
-4. stakingActivities: Weighted at 0.1
+- `transactionCount`: Weighted at 0.5
+- `tokenBalance`: Weighted at 0.3
+- `smartContractInteractions`: Weighted at 0.1
+- `stakingActivities`: Weighted at 0.1
 
 ## Main Features
 
