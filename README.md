@@ -27,11 +27,11 @@ The module calculates the score based on the following criteria:
 
 ## Dependencies: Utilizes the following dependencies:
 
-1. @solana/web3.js: Library for interacting with the Solana blockchain.
-2. typescript: TypeScript language compiler.
-3. ts-node & nodemon: Tools for TypeScript execution and monitoring.
-4. readline: Handles user input for wallet addresses.
-5. gradient-string: Enhances the visual output with ASCII art styling.
+- `@solana/web3.js`: Library for interacting with the Solana blockchain.
+- `typescript`: TypeScript language compiler.
+- `ts-node & nodemon`: Tools for TypeScript execution and monitoring.
+- `readline`: Handles user input for wallet addresses.
+- `gradient-string`: Enhances the visual output with ASCII art styling.
 
 ## Score Calculation:
 
@@ -44,7 +44,7 @@ The score for each wallet is calculated using predefined multipliers for each cr
 
 ## Main Features
 
-1. Visually appealing command line interface
+1. Visually appealing command line interface.
 1. Single Address Score Analysis: If a single wallet address is entered, the script calculates and displays the score attributed to that wallet.
 1. Multiple Addresses Score Analysis: If multiple wallet addresses are entered, it calculates and displays aggregate scores for all provided wallets.
 1. Error Handling: Implements robust error handling to manage exceptions and display informative error messages when issues arise during score calculations.
