@@ -1,10 +1,16 @@
 import { getWalletScore, getAggregateWalletScore } from "./scoring";
 import readline from "readline";
+import colors from "colors";
+import gradient from "gradient-string";
+import dsidArt from "./ascii";
 
 const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout,
 });
+
+const projectName = dsidArt;
+console.log(gradient.pastel.multiline(projectName) + "\n");
 
 const promptWalletAddresses = (): Promise<string[]> => {
   return new Promise((resolve) => {
@@ -26,15 +32,15 @@ const promptWalletAddresses = (): Promise<string[]> => {
     // Check if only one wallet address was provided
     if (walletAddresses.length === 1) {
       const score = await getWalletScore(walletAddresses[0]);
-      console.log(`This score is attributed to a single wallet`);
-      console.log(`Wallet Score:`, score);
+      console.log(`\nThis score is attributed to a single wallet`);
+      console.log(`\nWallet Score:`, score, `\n`);
     } else {
       // Get the aggregate score for multiple wallet addresses
       const aggregateScores = await getAggregateWalletScore(walletAddresses);
       console.log(
-        `This score is attributed to ${walletAddresses.length} wallets`
+        `\nThis score is attributed to ${walletAddresses.length} wallets`
       );
-      console.log(`Individual Wallet Scores:`, aggregateScores);
+      console.log(`\nIndividual Wallet Scores:`, aggregateScores, `\n`);
     }
   } catch (error) {
     console.error("Error calculating wallet scores:", error);

@@ -63,7 +63,7 @@ export const getAggregateWalletScore = async (
   const aggregateScore =
     scores.reduce((acc, { score }) => acc + score, 0) / scores.length;
 
-  console.log(`Aggregate Score:`, aggregateScore);
+  console.log(`\nAggregate Score:`, aggregateScore);
 
   return scores;
 };
