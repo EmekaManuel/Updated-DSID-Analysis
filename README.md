@@ -18,7 +18,7 @@ This module analyzes the on-chain footprint of Solana wallet accounts to derive 
 
 ## Usage
 
-The module calculates the score based on the following criteria:
+The module calculates the score and credibility of wallets based on the following criteria:
 
 1. Transaction history
 2. Token balances
@@ -46,8 +46,8 @@ Note: These multiplier values can be changed to suit your standard
 ## Main Features
 
 1. Visually appealing command line interface.
-1. Single Address Score Analysis: If a single wallet address is entered, the script calculates and displays the score attributed to that wallet.
-1. Multiple Addresses Score Analysis: If multiple wallet addresses are entered, it calculates and displays aggregate scores for all provided wallets. Note that multiple wallet addresses should be separated by a comma when inputing them in the commandline / terminal.
+1. Single Address Score Analysis: If a single wallet address is entered, the script calculates and displays the score and credibility attributed to that wallet.
+1. Multiple Addresses Score Analysis: If multiple wallet addresses are entered, it calculates and displays aggregate score and credibility for all provided wallets. Note that multiple wallet addresses should be separated by a comma when inputing them in the commandline / terminal.
 1. Error Handling: Implements robust error handling to manage exceptions and display informative error messages when issues arise during score calculations.
 
 This script enables users to interactively input wallet addresses, retrieve scores, and gain insights into the on-chain activities associated with the provided wallets on the Solana blockchain.
