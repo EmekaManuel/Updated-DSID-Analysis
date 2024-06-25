@@ -1,6 +1,5 @@
 import { getWalletScore, getAggregateWalletScore } from "./scoring";
 import readline from "readline";
-import colors from "colors";
 import gradient from "gradient-string";
 import dsidArt from "./ascii";
 

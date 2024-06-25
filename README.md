@@ -4,12 +4,16 @@
 
 This module analyzes the on-chain footprint of Solana wallet accounts to derive a credibility score.
 
+## Demo
+
+![Project Screenshot](./public/project-demo.png)
+
 ## Setup
 
 1. Clone the repository.
 2. Install dependencies: `npm install`
 3. Add your wallet address in `index.ts`.
-4. Run the project: `npx ts-node src/index.ts`
+4. Run the project: `npm start`
 
 ## Usage
 
