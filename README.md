@@ -11,7 +11,7 @@ This module analyzes the on-chain footprint of Solana wallet accounts to derive 
 ## Setup
 
 1. Clone the repository: `git clone https://github.com/EmekaManuel/Updated-DSID-Analysis`
-2. cd <repository-directory>
+2. cd `<repository-directory>`
 3. Install dependencies: `npm install`
 4. Run the project: `npm start`
 
