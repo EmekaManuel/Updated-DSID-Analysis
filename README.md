@@ -6,7 +6,8 @@ This module analyzes the on-chain footprint of Solana wallet accounts to derive 
 
 ## Demo
 
-![Project Screenshot](./public/project-demo.png)
+![Multiple Wallet Demo Screenshot](./public/multiple-wallet-demo.png)
+![Single Wallet Demo Screenshot](./public/single-wallet-demo.png)
 
 ## Setup
 
