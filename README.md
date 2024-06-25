@@ -35,7 +35,8 @@ The module calculates the score based on the following criteria:
 
 ## Score Calculation:
 
-The score for each wallet is calculated using predefined multipliers for each criterion: (These multiplier values can be changed to suit your standard)
+The score for each wallet is calculated using predefined multipliers for each criterion:
+Note: These multiplier values can be changed to suit your standard
 
 - `transactionCount`: Weighted at 0.5
 - `tokenBalance`: Weighted at 0.3
