@@ -33,6 +33,9 @@ const promptWalletAddresses = (): Promise<string[]> => {
       const score = await getWalletScore(walletAddresses[0]);
       console.log(`\nThis score is attributed to a single wallet`);
       console.log(`\nWallet Score:`, score, `\n`);
+      console.log(
+        `------------------------------------------------------------------------------------------------------------------\n`
+      );
     } else {
       // Get the aggregate score for multiple wallet addresses
       const aggregateScores = await getAggregateWalletScore(walletAddresses);
@@ -40,6 +43,9 @@ const promptWalletAddresses = (): Promise<string[]> => {
         `\nThis score is attributed to ${walletAddresses.length} wallets`
       );
       console.log(`\nIndividual Wallet Scores:`, aggregateScores, `\n`);
+      console.log(
+        `\n------------------------------------------------------------------------------------------------------------------\n`
+      );
     }
   } catch (error) {
     console.error("Error calculating wallet scores:", error);

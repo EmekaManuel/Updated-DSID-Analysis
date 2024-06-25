@@ -26,6 +26,15 @@ const analyzeWallet = async (publicKey: PublicKey): Promise<ScoreCriteria> => {
   ).length;
   const stakingActivities = accountInfo?.value ? 1 : 0;
 
+  // Log the gathered information
+  console.log(
+    `\n------------------------------------------------------------------------------------------------------------------\n`
+  );
+  console.log(`\nWallet Address: ${publicKey.toString()}`);
+  console.log(`\nTransaction Count: ${transactionCount}`);
+  console.log(`\nSmart Contract Interactions: ${smartContractInteractions}`);
+  console.log(`\nStaking Activities: ${stakingActivities}`);
+
   return {
     transactionCount,
     tokenBalance,
@@ -63,6 +72,9 @@ export const getAggregateWalletScore = async (
   const aggregateScore =
     scores.reduce((acc, { score }) => acc + score, 0) / scores.length;
 
+  console.log(
+    `\n------------------------------------------------------------------------------------------------------------------\n`
+  );
   console.log(`\nAggregate Score:`, aggregateScore);
 
   return scores;
