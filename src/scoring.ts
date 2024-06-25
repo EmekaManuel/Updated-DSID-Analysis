@@ -43,25 +43,34 @@ const analyzeWallet = async (publicKey: PublicKey): Promise<ScoreCriteria> => {
   };
 };
 
-// Function to calculate a score based on the score criteria
-const calculateScore = (criteria: ScoreCriteria): number => {
-  return (
+// Function to calculate a score and credibility based on the score criteria
+const calculateScore = (
+  criteria: ScoreCriteria
+): { score: number; credibility: string } => {
+  const score =
     criteria.transactionCount * SCORE_MULTIPLIERS.transactionCount +
     criteria.tokenBalance * SCORE_MULTIPLIERS.tokenBalance +
     criteria.smartContractInteractions *
       SCORE_MULTIPLIERS.smartContractInteractions +
-    criteria.stakingActivities * SCORE_MULTIPLIERS.stakingActivities
-  );
+    criteria.stakingActivities * SCORE_MULTIPLIERS.stakingActivities;
+
+  let credibility = "Low";
+  if (score > 75) {
+    credibility = "High";
+  } else if (score > 50) {
+    credibility = "Medium";
+  }
+
+  return { score, credibility };
 };
 
-// Function to get the score for a single wallet
 export const getWalletScore = async (
   walletAddress: string
-): Promise<WalletScore> => {
+): Promise<{ wallet: string; score: number; credibility: string }> => {
   const publicKey = new PublicKey(walletAddress);
   const criteria = await analyzeWallet(publicKey);
-  const score = calculateScore(criteria);
-  return { wallet: walletAddress, score };
+  const { score, credibility } = calculateScore(criteria);
+  return { wallet: walletAddress, score, credibility };
 };
 
 // Function to get the aggregate score for multiple wallets
@@ -69,13 +78,31 @@ export const getAggregateWalletScore = async (
   walletAddresses: string[]
 ): Promise<WalletScore[]> => {
   const scores = await Promise.all(walletAddresses.map(getWalletScore));
+
   const aggregateScore =
     scores.reduce((acc, { score }) => acc + score, 0) / scores.length;
+
+  let aggregateCredibility;
+  if (aggregateScore > 75) {
+    aggregateCredibility = "High";
+  } else if (aggregateScore > 50) {
+    aggregateCredibility = "Medium";
+  } else {
+    aggregateCredibility = "Low";
+  }
 
   console.log(
     `\n------------------------------------------------------------------------------------------------------------------\n`
   );
   console.log(`\nAggregate Score:`, aggregateScore);
+
+  if (aggregateCredibility === "Low") {
+    console.log(`Aggregate Credibility: ${aggregateCredibility}`.red, `\n`);
+  } else if (aggregateCredibility === "Medium") {
+    console.log(`Aggregate Credibility: ${aggregateCredibility}`.yellow, `\n`);
+  } else {
+    console.log(`Aggregate Credibility: ${aggregateCredibility}`.green, `\n`);
+  }
 
   return scores;
 };

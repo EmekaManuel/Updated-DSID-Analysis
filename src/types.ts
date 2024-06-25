@@ -8,4 +8,5 @@ export interface ScoreCriteria {
 export interface WalletScore {
   wallet: string;
   score: number;
+  credibility: string;
 }

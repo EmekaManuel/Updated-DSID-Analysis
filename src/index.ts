@@ -2,6 +2,9 @@ import { getWalletScore, getAggregateWalletScore } from "./scoring";
 import readline from "readline";
 import gradient from "gradient-string";
 import dsidArt from "./ascii";
+import colors from "colors";
+
+colors.enable();
 
 const rl = readline.createInterface({
   input: process.stdin,
@@ -30,9 +33,17 @@ const promptWalletAddresses = (): Promise<string[]> => {
 
     // Check if only one wallet address was provided
     if (walletAddresses.length === 1) {
-      const score = await getWalletScore(walletAddresses[0]);
+      const { score, credibility } = await getWalletScore(walletAddresses[0]);
       console.log(`\nThis score is attributed to a single wallet`);
       console.log(`\nWallet Score:`, score, `\n`);
+      if (credibility === "Low") {
+        console.log(`Credibility: ${credibility}`.red, `\n`);
+      } else if (credibility === "Medium") {
+        console.log(`Credibility: ${credibility}`.yellow, `\n`);
+      } else {
+        console.log(`Credibility: ${credibility}`.green, `\n`);
+      }
+
       console.log(
         `------------------------------------------------------------------------------------------------------------------\n`
       );
@@ -41,8 +52,16 @@ const promptWalletAddresses = (): Promise<string[]> => {
       const aggregateScores = await getAggregateWalletScore(walletAddresses);
       console.log(
         `\nThis score is attributed to ${walletAddresses.length} wallets`
+          .underline
       );
-      console.log(`\nIndividual Wallet Scores:`, aggregateScores, `\n`);
+      console.log(
+        `\nIndividual Wallet Scores:`,
+        aggregateScores.map(
+          (score) =>
+            `${score.wallet}: ${score.score}, Credibility: ${score.credibility}`
+        ),
+        `\n`
+      );
       console.log(
         `\n------------------------------------------------------------------------------------------------------------------\n`
       );
