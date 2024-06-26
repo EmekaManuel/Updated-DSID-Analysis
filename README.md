@@ -22,10 +22,10 @@ These screenshots demonstrate the module in action, showcasing both the analysis
 
 The module calculates the score and credibility of wallets based on the following criteria:
 
-1. Transaction history: Analyzes the frequency and types of transactions.
-2. Token balances: Evaluates the diversity and amounts of tokens held.
-3. Smart contract interactions: Assesses engagements with smart contracts.
-4. Staking activities: Determines participation in staking and related activities.
+1. `Transaction history`: Analyzes the frequency and types of transactions.
+2. `Token balances`: Evaluates the diversity and amounts of tokens held.
+3. `Smart contract interactions`: Assesses engagements with smart contracts.
+4. `Staking activities`: Determines participation in staking and related activities.
 
 ## Dependencies: Utilizes the following dependencies:
 
